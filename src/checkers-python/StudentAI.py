@@ -81,7 +81,8 @@ class StudentAI():
         # self.board.make_move(move,self.color)
         # print(val)
         # return move
-        currState = (self.board.board, self.opponent[self.color])
+        tupleBoard = tuple(tuple(sublist) for sublist in self.board.board)
+        currState = (tupleBoard, self.opponent[self.color])
         nextMove = self._search(currState, self.board)
         return nextMove
     
