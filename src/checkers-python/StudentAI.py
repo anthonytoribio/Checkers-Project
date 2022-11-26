@@ -172,7 +172,7 @@ class StudentAI():
 
         while True and root.movesUnfinished > 0:
             legalMoves = currNode.board.get_all_possible_moves(self.opponent[currNode.gameState[1]])
-            if currNode.board.is_win() != 0:
+            if currNode.board.is_win(self.opponent[currNode.gameState[1]]) != 0:
                 #Someone has won
                 currNode.propagateCompletion()
                 return currNode
@@ -229,7 +229,7 @@ class StudentAI():
         boardCopy = deepcopy(gameNode.board)
 
         while True:
-            result = boardCopy.is_win() #0 = no winner , 1 = Black wins, 2 = White wins, -1 = Tie
+            result = boardCopy.is_win(currPlayer) #0 = no winner , 1 = Black wins, 2 = White wins, -1 = Tie
             if result != 0:
                 if result == self.color:
                     return 1, actions
