@@ -95,7 +95,7 @@ class StudentAI():
         if (gameState in self.tree):
             root = self.tree[gameState]
         else:
-            nChildren = len(board.get_all_possible_moves(self.color))
+            nChildren = len(board.get_all_possible_moves(self.opponent[gameState[1]]))
             boardCopy = deepcopy(board)
             root = Node(gameState, None, nChildren, boardCopy)
         
@@ -171,7 +171,7 @@ class StudentAI():
         currNode = root
 
         while True and root.movesUnfinished > 0:
-            legalMoves = currNode.board.get_all_possible_moves()
+            legalMoves = currNode.board.get_all_possible_moves(self.opponent[currNode.gameState[1]])
             if currNode.board.is_win() != 0:
                 #Someone has won
                 currNode.propagateCompletion()
@@ -240,7 +240,7 @@ class StudentAI():
                 else:
                     raise ValueError("Error from: StudentAI._simulate() - Expected the result to be either: 0, 1, 2, -1")
             
-            moves = boardCopy.get_all_possible_moves()
+            moves = boardCopy.get_all_possible_moves(currPlayer)
             picked = random.choice(moves)
             actions[currPlayer].append(picked)
             boardCopy.make_move(picked, currPlayer)
