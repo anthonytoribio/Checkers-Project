@@ -178,7 +178,7 @@ class StudentAI():
                 return currNode
             elif len(currNode.children) < len(legalMoves):
                 unexpanded = [move for move in legalMoves if tuple(move) not in currNode.movesExpanded]
-                if len(unexpanded <= 0):
+                if len(unexpanded) <= 0:
                     raise ValueError("Error from : StudentAI._treePolicy() - Expected unexpanded moves list to have a length greater than 0")
                 move = random.choice(unexpanded)
 
