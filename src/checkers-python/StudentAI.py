@@ -176,7 +176,7 @@ class StudentAI():
 
         while True and root.movesUnfinished > 0:
             legalMoves = [move for moves in currNode.board.get_all_possible_moves(self.opponent[currNode.gameState[1]]) for move in moves]
-            if currNode.board.is_win(self.opponent[currNode.gameState[1]]) != 0:
+            if currNode.board.is_win(currNode.gameState[1]) != 0:
                 #Someone has won
                 currNode.propagateCompletion()
                 return currNode
@@ -202,7 +202,7 @@ class StudentAI():
         
     
     def _bestChild(self, node: Node) -> Node:
-        enemyTurn = (node.gameState[1] != self.color)
+        enemyTurn = (self.opponent[node.gameState[1]] != self.color)
         values = {} #dictionary; keys: Nodes, vals: float (representing how good it is)
 
         for child in node.children:
