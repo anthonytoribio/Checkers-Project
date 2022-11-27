@@ -84,6 +84,7 @@ class StudentAI():
         tupleBoard = tuple(tuple(sublist) for sublist in self.board.board)
         currState = (tupleBoard, self.opponent[self.color])
         nextMove = self._search(currState, self.board)
+        self.board.make_move(nextMove, self.color)
         return nextMove
     
     def _search(self, gameState, board: Board) -> Move:
