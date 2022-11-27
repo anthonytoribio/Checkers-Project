@@ -108,7 +108,7 @@ class StudentAI():
         now = time.time()
         while time.time() - now < self.simTime and root.movesUnfinished > 0:
             pickedNode = self._treePolicy(root)
-            result, actions = self._simulate(pickedNode.gameState)
+            result, actions = self._simulate(pickedNode)
             self._backProp(pickedNode, result, actions, player=pickedNode.gameState[1])
             simCount += 1
         
