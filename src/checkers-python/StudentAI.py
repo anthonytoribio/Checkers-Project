@@ -234,7 +234,7 @@ class StudentAI():
         boardCopy = deepcopy(gameNode.board)
 
         while True:
-            result = boardCopy.is_win(currPlayer) #0 = no winner , 1 = Black wins, 2 = White wins, -1 = Tie
+            result = boardCopy.is_win(self.opponent[currPlayer]) #0 = no winner , 1 = Black wins, 2 = White wins, -1 = Tie
             if result != 0:
                 if result == self.color:
                     return 1, actions
