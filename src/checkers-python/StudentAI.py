@@ -83,7 +83,8 @@ class StudentAI():
         # return move
         tupleBoard = tuple(tuple(sublist) for sublist in self.board.board)
         currState = (tupleBoard, self.opponent[self.color])
-        nextMove = self._search(currState, self.board)
+        boardCopy = deepcopy(self.board)
+        nextMove = self._search(currState, boardCopy)
         self.board.make_move(nextMove, self.color)
         return nextMove
     
@@ -197,7 +198,7 @@ class StudentAI():
             else:
                 currNode = self._bestChild(currNode)
             
-            return currNode
+        return currNode
         
     
     def _bestChild(self, node: Node) -> Node:
