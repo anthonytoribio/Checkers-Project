@@ -227,7 +227,7 @@ class StudentAI():
 
     def _simulate(self, gameNode: Node) -> "float, dict":
         gameState = gameNode.gameState
-        currPlayer = self.opponent(gameState[1])
+        currPlayer = self.opponent[gameState[1]]
         actions = {gameState[1]: [], self.opponent[gameState[1]]: []}
         boardCopy = deepcopy(gameNode.board)
 
