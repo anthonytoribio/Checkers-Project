@@ -186,7 +186,8 @@ class StudentAI():
 
                 nextBoardState = deepcopy(currNode.board)
                 nextBoardState.make_move(move, self.opponent[currNode.gameState[1]])
-                nextState = (nextBoardState.board, self.opponent[currNode.gameState[1]])
+                tupleBoard = tuple(tuple(sublist) for sublist in nextBoardState.board)
+                nextState = (tupleBoard, self.opponent[currNode.gameState[1]])
                 child = Node(nextState, move, len(legalMoves), nextBoardState) #might be wrong NChildren
                 currNode.addChild(child)
                 self.tree[nextState] = child
