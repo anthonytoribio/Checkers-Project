@@ -63,7 +63,7 @@ class StudentAI():
         self.opponent = {1:2,2:1}
         self.color = 2
         self.tree = {}
-        self.simTime = 13 #in seconds
+        self.simTime = 10 #in seconds
         self.explorationVal = 2 #TODO: Update this to see variations
         self.bias = 0.1
 
